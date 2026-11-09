@@ -132,8 +132,8 @@ function formatCard(issue: IssueSummary, expanded: boolean): string {
 }
 
 
-/** Shipped defaults. Used when config.json is missing or invalid. Copy config.default.json to start. */
-export const DEFAULT_CONFIG: { projects: string[] } = { projects: ["TS"] };
+/** Shipped defaults: no keys, so nothing is fetched or completed until config.json lists some. */
+export const DEFAULT_CONFIG: { projects: string[] } = { projects: [] };
 
 /** Normalized keys from config.json, or the defaults when the file is missing or invalid. */
 export function parseKeys(raw: unknown): string[] {

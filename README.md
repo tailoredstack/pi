@@ -65,6 +65,8 @@ Linear and Jira only fetch and complete keys listed in their own `config.json`. 
 
 Keys are matched case-insensitively. A `#KEY-n` reference whose key is not listed is ignored, so other text is never sent to Linear or Jira.
 
+The shipped default in each `config.default.json` is an empty list, so nothing is fetched or completed until you add keys. Copy it to `config.json` to start.
+
 When you install from GitHub, Pi keeps a managed copy. Edit `config.json` in the installed copy, or use a local checkout so your edits survive updates.
 
 ### Linear
