@@ -1,9 +1,9 @@
 /**
  * Linear extension for pi, built on the `linear` MCP server (pi-mcp-adapter).
  *
- * - `LIN#ISSUE-ID` in a prompt (e.g. `fix LIN#ABC-85`) fetches the issue and attaches it
+ * - `#ISSUE-ID` in a prompt (e.g. `fix #ABC-85`) fetches the issue and attaches it
  *   to that message as context, rendered as a card in the TUI.
- * - Typing `LIN#` in the editor autocompletes Linear issues, with status/title as description.
+ * - Typing `#` in the editor autocompletes Linear issues, with status/title as description.
  *
  * All Linear access goes through the MCP adapter's runtime tool-call event, so auth,
  * lazy connection and output guards are the adapter's, not this extension's.

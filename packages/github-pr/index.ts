@@ -4,9 +4,9 @@
  * Scoped to the current repository: `gh` resolves the repo from the git remote of
  * the session cwd, and no `--repo` flag is passed, so it cannot reach other repos.
  *
- * - `PR#123` in a prompt fetches PR #123 of the current repo and attaches it as context,
+ * - `#123` in a prompt fetches PR #123 of the current repo and attaches it as context,
  *   rendered as a card in the TUI.
- * - Typing `PR#` in the editor autocompletes open PRs of the current repo.
+ * - Typing `#` in the editor autocompletes open PRs of the current repo.
  */
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";

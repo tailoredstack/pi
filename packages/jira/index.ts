@@ -1,9 +1,9 @@
 /**
  * Jira extension for pi, built on the `jira` MCP server (Atlassian, pi-mcp-adapter).
  *
- * - `JIR#KEY-123` in a prompt (e.g. `fix JIR#CPA-2110`) fetches the issue and attaches it
+ * - `#KEY-123` in a prompt (e.g. `fix #DEF-2110`) fetches the issue and attaches it
  *   to that message as context, rendered as a card in the TUI.
- * - Typing `JIR#` in the editor autocompletes issues assigned to you.
+ * - Typing `#` in the editor autocompletes issues assigned to you.
  *
  * All Jira access goes through the MCP adapter's runtime tool-call event, so auth,
  * lazy connection and output guards are the adapter's, not this extension's.
@@ -31,7 +31,7 @@ const MAX_DESCRIPTION_CHARS = 4000;
 const MAX_SUGGESTIONS = 20;
 const SUGGESTION_TTL_MS = 30_000;
 
-// Project key + number, e.g. CPA-2110.
+// Project key + number, e.g. DEF-2110.
 const ISSUE_REF = /(?<!\w)#([A-Z][A-Z0-9_]+-\d+)\b/g;
 const ISSUE_TOKEN = /(?:^|[ \t])#([^\s#]*)$/;
 

@@ -80,7 +80,7 @@ Jira keys are project keys (for example `DEF` in `DEF-2110`). List them with the
 ## How it works
 
 - **Prompts:** on each sent prompt, every `#` reference matching a configured key (Linear, Jira) or a number (GitHub PR) is fetched before the run starts. The result is stored as a `linear-issue`, `jira-issue` or `github-pr` message, sent to the model, and shown as a card. Failed fetches show a warning and the prompt is still sent.
-- **Autocomplete:** typing `#` opens suggestions from each extension. An extension only claims a token whose key is configured, so `#TS-` shows Linear, `#DEF-` shows Jira, and `#7` shows PRs. Other tokens fall back to pi's built-in completion.
+- **Autocomplete:** typing `#` opens suggestions from each extension. An extension only claims a token whose key is configured, so `#ABC-` shows Linear, `#DEF-` shows Jira, and `#7` shows PRs. Other tokens fall back to pi's built-in completion.
 - **Caching:** autocomplete lists are cached for 30 seconds per extension.
 - **Scope:** Linear and Jira show only items assigned to you. GitHub shows open PRs of the repository the session was started in.
 
