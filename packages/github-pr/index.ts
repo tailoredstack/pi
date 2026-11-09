@@ -26,7 +26,7 @@ const SUGGESTION_TTL_MS = 30_000;
 const EXEC_TIMEOUT_MS = 10_000;
 
 const PR_REF = /(?<!\w)#(\d+)\b/g;
-const PR_TOKEN = /(?:^|[ \t])#(\d*)$/;
+const PR_TOKEN = /(?:^|[ \t])#(\d+)$/;
 
 export interface PrSummary {
 	number: number;
