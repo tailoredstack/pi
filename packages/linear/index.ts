@@ -11,6 +11,8 @@
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { readFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
 	type AutocompleteItem,
@@ -24,7 +26,11 @@ const SERVER = "linear";
 const TOOL_CALL_EVENT = "pi-mcp-adapter:runtime-tool-call:v1";
 const TOOL_CALL_VERSION = 1;
 const CUSTOM_TYPE = "linear-issue";
-const CONFIG_PATH = fileURLToPath(new URL("./config.json", import.meta.url));
+/** config.json next to this file (repo checkout), then the installed symlink location. First readable file wins. */
+const CONFIG_PATHS = [
+    fileURLToPath(new URL("./config.json", import.meta.url)),
+    join(homedir(), ".pi", "agent", "extensions", "linear", "config.json"),
+];
 const ACTIVE_STATUS_TYPES = ["unstarted", "started"];
 
 const MAX_ISSUES_PER_PROMPT = 5;
@@ -145,9 +151,20 @@ export function parseKeys(raw: unknown): string[] {
         .filter((key) => /^[A-Z][A-Z0-9_]*$/.test(key));
 }
 
+function readFirstConfig(): string {
+    for (const path of CONFIG_PATHS) {
+        try {
+            return readFileSync(path, "utf8");
+        } catch {
+            // try the next location
+        }
+    }
+    throw new Error("config.json not found");
+}
+
 function readKeys(): string[] {
     try {
-        const keys = parseKeys(JSON.parse(readFileSync(CONFIG_PATH, "utf8")));
+        const keys = parseKeys(JSON.parse(readFirstConfig()));
         return keys.length > 0 ? keys : parseKeys(DEFAULT_CONFIG);
     } catch {
         return parseKeys(DEFAULT_CONFIG);
