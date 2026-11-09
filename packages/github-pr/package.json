@@ -9,7 +9,20 @@
     ]
   },
   "peerDependencies": {
-    "@earendil-works/pi-coding-agent": ">=1.5.0",
-    "@earendil-works/pi-tui": ">=1.5.0"
-  }
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "files": [
+    "index.ts",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tailoredstack/pi.git",
+    "directory": "packages/github-pr"
+  },
+  "keywords": [
+    "pi-package"
+  ],
+  "license": "UNLICENSED"
 }

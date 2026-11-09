@@ -2,6 +2,33 @@
   "name": "@tailoredstack/pi",
   "version": "0.1.0",
   "private": true,
-  "description": "Pi coding-agent extensions for Linear, Jira and GitHub",
-  "workspaces": ["packages/*"]
+  "description": "Pi coding-agent extensions for Linear, Jira and GitHub pull requests",
+  "keywords": [
+    "pi-package"
+  ],
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tailoredstack/pi.git"
+  },
+  "pi": {
+    "extensions": [
+      "./packages/linear/index.ts",
+      "./packages/jira/index.ts",
+      "./packages/github-pr/index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "pi-mcp-adapter": "*"
+  },
+  "peerDependenciesMeta": {
+    "pi-mcp-adapter": {
+      "optional": true
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
