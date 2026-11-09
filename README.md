@@ -5,7 +5,7 @@ Pi coding-agent extensions for Linear, Jira and GitHub pull requests.
 | Extension | In a prompt | `#` autocomplete |
 | --- | --- | --- |
 | `packages/linear` | `#ABC-85` → fetches the Linear issue and attaches it as context | Your assigned Linear issues (Todo and In Progress) for keys in `config.json` |
-| `packages/jira` | `#CPA-2110` → fetches the Jira issue and attaches it as context | Your assigned Jira issues (To Do and In Progress) for keys in `config.json` |
+| `packages/jira` | `#DEF-2110` → fetches the Jira issue and attaches it as context | Your assigned Jira issues (To Do and In Progress) for keys in `config.json` |
 | `packages/github-pr` | `#76` → fetches PR #76 of the current repo and attaches it as context | Open PRs of the current repo |
 
 Each reference is attached to the message it appears in, and rendered as a card in the TUI. Up to 5 references per prompt.
@@ -75,12 +75,12 @@ Linear keys are Linear team keys. Check yours with the Linear MCP (`linear_list_
 
 ### Jira
 
-Jira keys are project keys (for example `CPA` in `CPA-2110`). List them with the Jira MCP (`listJiraProjects`).
+Jira keys are project keys (for example `DEF` in `DEF-2110`). List them with the Jira MCP (`listJiraProjects`).
 
 ## How it works
 
 - **Prompts:** on each sent prompt, every `#` reference matching a configured key (Linear, Jira) or a number (GitHub PR) is fetched before the run starts. The result is stored as a `linear-issue`, `jira-issue` or `github-pr` message, sent to the model, and shown as a card. Failed fetches show a warning and the prompt is still sent.
-- **Autocomplete:** typing `#` opens suggestions from each extension. An extension only claims a token whose key is configured, so `#TS-` shows Linear, `#CPA-` shows Jira, and `#7` shows PRs. Other tokens fall back to pi's built-in completion.
+- **Autocomplete:** typing `#` opens suggestions from each extension. An extension only claims a token whose key is configured, so `#TS-` shows Linear, `#DEF-` shows Jira, and `#7` shows PRs. Other tokens fall back to pi's built-in completion.
 - **Caching:** autocomplete lists are cached for 30 seconds per extension.
 - **Scope:** Linear and Jira show only items assigned to you. GitHub shows open PRs of the repository the session was started in.
 
