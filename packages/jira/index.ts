@@ -198,16 +198,25 @@ function statusColor(issue: JiraIssueSummary): string {
 }
 
 
+/** Shipped defaults. Used when config.json is missing or invalid. Copy config.default.json to start. */
+export const DEFAULT_CONFIG: { projects: string[] } = { projects: ["DEF"] };
+
+/** Normalized keys from config.json, or the defaults when the file is missing or invalid. */
+export function parseKeys(raw: unknown): string[] {
+    const projects = (raw as { projects?: unknown } | null)?.projects;
+    if (!Array.isArray(projects)) return [];
+    return projects
+        .filter((key): key is string => typeof key === "string")
+        .map((key) => key.toUpperCase())
+        .filter((key) => /^[A-Z][A-Z0-9_]*$/.test(key));
+}
+
 function readKeys(): string[] {
     try {
-        const config = JSON.parse(readFileSync(CONFIG_PATH, "utf8")) as { projects?: unknown };
-        if (!Array.isArray(config.projects)) return [];
-        return config.projects
-            .filter((key): key is string => typeof key === "string")
-            .map((key) => key.toUpperCase())
-            .filter((key) => /^[A-Z][A-Z0-9_]*$/.test(key));
+        const keys = parseKeys(JSON.parse(readFileSync(CONFIG_PATH, "utf8")));
+        return keys.length > 0 ? keys : parseKeys(DEFAULT_CONFIG);
     } catch {
-        return [];
+        return parseKeys(DEFAULT_CONFIG);
     }
 }
 
