@@ -1,0 +1,7 @@
+{
+  "name": "@tailoredstack/pi-jira",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi extension: Jira issue refs in prompts and #KEY-n autocomplete",
+  "pi": { "extensions": ["./index.ts"] }
+}

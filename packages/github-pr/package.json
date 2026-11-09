@@ -1,0 +1,7 @@
+{
+  "name": "@tailoredstack/pi-github-pr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi extension: GitHub PR refs in prompts and #number autocomplete (current repo, via gh)",
+  "pi": { "extensions": ["./index.ts"] }
+}
