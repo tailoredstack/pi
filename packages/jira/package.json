@@ -3,5 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "description": "Pi extension: Jira issue refs in prompts and #KEY-n autocomplete",
-  "pi": { "extensions": ["./index.ts"] }
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=1.5.0",
+    "@earendil-works/pi-tui": ">=1.5.0",
+    "pi-mcp-adapter": ">=7.0.1"
+  },
+  "peerDependenciesMeta": {
+    "pi-mcp-adapter": {
+      "optional": false
+    }
+  }
 }

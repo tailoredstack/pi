@@ -3,5 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "description": "Pi extension: GitHub PR refs in prompts and #number autocomplete (current repo, via gh)",
-  "pi": { "extensions": ["./index.ts"] }
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=1.5.0",
+    "@earendil-works/pi-tui": ">=1.5.0"
+  }
 }
